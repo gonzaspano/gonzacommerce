@@ -1,0 +1,14 @@
+.bodyHome {
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    background-image: url('../assets/flores.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000;
+    padding-top: 25px;
+}
+.subtitle {
+    text-align: center;
+    color: black;
+    font-family: Great Vibes, cursive;
+    font-size: 60px;
+}

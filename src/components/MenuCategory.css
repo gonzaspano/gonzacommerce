@@ -1,0 +1,14 @@
+.MenuCategory {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.textCat {
+    font-family: Great Vibes, cursive;
+    font-size: 70px;
+    color: black;
+    font-size: 25px;
+}

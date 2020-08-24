@@ -1,0 +1,9 @@
+.cartImg {
+    height: 50px;
+    margin-top: 35px
+}
+
+.navbar3 {
+    display: flex;
+    justify-content: space-between;
+}
