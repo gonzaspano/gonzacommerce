@@ -17,7 +17,7 @@ function Navbar() {
                     <Title />
                 </div>
                 <div className="navbar3 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <Link to={`/cart`}> <img src= {CartImg} className="cartImg" /> </Link>
+                    <Link to={`/cart`}> <img src= {CartImg} className="cartImg" alt="cart" /> </Link>
                     <SearchBox />
                 </div>
             </div>
