@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../components/Counter.css'
-import {Link} from 'react-router-dom'
 
 function Counter(props) {
     const [number, setNumber] = useState(1)
+    const quantity = props.quantity
 
     function addClick() {
         if (number < props.numMax) {
@@ -17,20 +17,20 @@ function Counter(props) {
         }
     }
 
+    useEffect(()=>{
+        quantity(number)
+    },[number])
+
     return (
         <div className="counter_container">
             <div>
-                <h4>Agregar productos</h4>
+                <h4>¿Cuántos querés?</h4>
             </div>
-
             <div>
                 <div className="container_number">
-                    <button type="button" class="btn btn-dark" onClick={() => removeClick()} > Menos </button>
-                    <input type="text" value={number}></input>
-                    <button type="button" class="btn btn-dark" onClick={() => addClick()} > Más </button>
-                </div>
-                <div className="container_button">
-                    <Link to={`/cart`}> <button type="button" className="btn btn-dark">Agregar al carro</button> </Link>
+                    <button type="button" className="btn btn-dark buttonCart" onClick={() => removeClick()} > - </button>
+                    <p className="number"> {number} </p>
+                    <button type="button" className="btn btn-dark buttonCart" onClick={() => addClick()} > + </button>
                 </div>
             </div>
         </div>

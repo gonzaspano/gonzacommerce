@@ -5,14 +5,14 @@ import ramo1 from '../assets/ramo1.jpg'
 const products = [{
     id: "1",
     name: "Ramo de flores",
-    price: "500",
+    price: "2000",
     stock: "5",
     img: ramo1,
     information: "Ramo con cinco tipos de flores de estación a elección del comprador."
 }, {
     id: "2",
     name: "Florero",
-    price: "500",
+    price: "1500",
     stock: "4",
     img: florero2,
     information: "Conformado por 12 flores del mismo tipo a elección."

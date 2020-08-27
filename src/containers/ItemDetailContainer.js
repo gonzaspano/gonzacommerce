@@ -3,6 +3,7 @@ import Products from '../components/Products'
 import { useParams } from 'react-router-dom'
 import '../containers/ItemDetailContainer.css'
 import ItemDetail from '../components/ItemDetail'
+import LoadingText from '../components/LoadingText'
 
 const ProdLists = new Promise((res, rej) => {
     res(Products)
@@ -24,13 +25,7 @@ function ItemDetailContainer() {
 
 
     return <>
-        {Loading ?  <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h2 className="subtitle">Cargando producto</h2>
-                    </div> :
-
-                    <ItemDetail prod= {Prod} />
-
-        }
+        { Loading ? <LoadingText /> : <ItemDetail prod= {Prod} /> }
     </>
 }
 
