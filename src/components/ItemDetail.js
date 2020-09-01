@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Counter from '../components/Counter'
 import '../components/ItemDetail.css'
 import AddToCart from './AddToCart'
-import { CartContexProvider } from '../context/CartContext'
+import { CartContexProvider, useCartContext } from '../context/CartContext'
 
 function ItemDetail(props) {
-    const [prodQuantity, setProdQuantity] = useState(1)
+    const [prodQuantity, setProdQuantity] = useState(0)
 
     function setQuantity(number) {
         setProdQuantity(number)
     }
-
     return (
         <div className="container-fuid">
             <div className="row">
@@ -22,10 +21,8 @@ function ItemDetail(props) {
                         <h3 className="titleDetail"> {props.prod.name} </h3>
                         <p className="textDetail"> {props.prod.information} </p>
                         <p className="priceDetail"> ${props.prod.price} </p>
-                        <Counter numMin="1" numMax={props.prod.stock} quantity={setQuantity} />
-                        <CartContexProvider>
-                            <AddToCart prod={props.prod} price={props.prod.price} quantity={prodQuantity} />
-                        </CartContexProvider>
+                        <Counter numMin="1" numMax={props.prod.stock}  quantity={setQuantity}  />
+                        <AddToCart prod={props.prod} price={props.prod.price}  quantity={prodQuantity} />
                     </div>
                 </div>
             </div>
