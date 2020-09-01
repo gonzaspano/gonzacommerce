@@ -3,7 +3,7 @@ import '../components/Counter.css'
 
 function Counter(props) {
     const [number, setNumber] = useState(1)
-    const quantity = props.quantity
+    const setQuantity = props.quantity
 
     function addClick() {
         if (number < props.numMax) {
@@ -18,7 +18,7 @@ function Counter(props) {
     }
 
     useEffect(()=>{
-        quantity(number)
+        setQuantity(number)
     },[number])
 
     return (

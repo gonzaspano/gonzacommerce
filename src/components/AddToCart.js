@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useCartContext } from '../context/CartContext'
 
 function AddToCart(props) {
+     const {addProd} = useCartContext()
+
     return (
         <div className="container_button">
-            <button type="button" className="btn btn-dark">Agregar al carro ${props.price*props.quantity} </button>
+            <button type="button" className="btn btn-dark" 
+            onClick={() => addProd(props.prod)}>
+                Agregar al carro ${props.price * props.quantity} 
+            </button>
         </div>
     )
 }

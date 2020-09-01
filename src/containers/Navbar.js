@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Title from '../components/Title'
 import SearchBox from '../components/SearchBox'
-import CartImg from '../assets/cart.png'
 import '../containers/Navbar.css'
 import MenuCategory from '../components/MenuCategory'
-import {Link} from 'react-router-dom'
+import CartIcon from '../components/CartIcon'
 
 function Navbar() {
     return (
@@ -17,7 +16,7 @@ function Navbar() {
                     <Title />
                 </div>
                 <div className="navbar3 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <Link to={`/cart`}> <img src= {CartImg} className="cartImg" alt="cart" /> </Link>
+                    <CartIcon />
                     <SearchBox />
                 </div>
             </div>
