@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Counter from '../components/Counter'
 import '../components/ItemDetail.css'
 import AddToCart from './AddToCart'
-import { CartContexProvider, useCartContext } from '../context/CartContext'
 
 function ItemDetail(props) {
     const [prodQuantity, setProdQuantity] = useState(0)

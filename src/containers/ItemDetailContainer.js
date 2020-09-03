@@ -21,7 +21,7 @@ function ItemDetailContainer() {
                 setLoading(false)
             })
         }, 3000)
-    }, [])
+    },[])
 
 
     return <>
