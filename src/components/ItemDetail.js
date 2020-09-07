@@ -17,7 +17,7 @@ function ItemDetail(props) {
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div className="containerDetail">
-                        <h3 className="titleDetail"> {props.prod.name} </h3>
+                        <h3 className="titleDetail"> {props.prod.title} </h3>
                         <p className="textDetail"> {props.prod.information} </p>
                         <p className="priceDetail"> ${props.prod.price} </p>
                         <Counter numMin="1" numMax={props.prod.stock}  quantity={setQuantity}  />

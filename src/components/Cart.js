@@ -15,7 +15,7 @@ function CartComponent() {
                 <h4>Productos agregados</h4>
                 {list.map((p) =>
                     <div key={p.id} className="productContainer">
-                        <h3> {p.name} </h3>
+                        <h3> {p.title} </h3>
                         <p> x {p.quantity} </p>
                         <p> ${p.quantity * p.price} </p>
                         <img src={DeleteImg} alt="delete" className="DeleteImg" onClick= {() => deleteProd(p) } />

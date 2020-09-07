@@ -13,15 +13,23 @@ function App() {
       <CartContexProvider>
         <Navbar />
         <Switch>
+
           <Route exact path='/' >
             <Home />
           </Route>
-          <Route path='/ItemDetailContainer/:id'>
+
+          <Route path='categories/:category' >
+            <Home />
+          </Route>
+
+          <Route path='/products/:id'>
             <ItemDetailContainer />
           </Route>
+
           <Route path='/cart'>
             <Cart />
           </Route>
+
         </Switch>
       </CartContexProvider>
       <Footer />
