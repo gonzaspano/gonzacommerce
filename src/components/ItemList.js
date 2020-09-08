@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Product from './Products'
 import { Link, useParams } from 'react-router-dom'
 import '../components/ItemList.css'
 import { getFirestore } from '../firebase/index'
+import { useSearchContext } from '../context/SearchContext'
 
 function ItemList() {
     const [prods, setProds] = useState([])
-    const { category } = useParams()
+    const { category = "undefined" } = useParams()
+    const { InputValue } = useSearchContext()
 
     useEffect(() => {
         const db = getFirestore()
@@ -25,7 +26,7 @@ function ItemList() {
                 console.log("listo")
             })
         } else {
-            const itemCategory = itemCollection.where("category", "===", category)
+            const itemCategory = itemCollection.where("category", "==", category)
             itemCategory.get().then((querySnapshot) => {
                 if (querySnapshot.size === 0) {
                     console.log("no resultados pa")
@@ -37,13 +38,18 @@ function ItemList() {
                 console.log("listo")
             })
         }
-    }, [])
+
+    }, [category, InputValue])
 
     return <>
-        {prods.map((p) =>
+        {prods
+        .filter(p => {
+            return p.title.toLowerCase().indexOf(InputValue) >= 0
+        } )
+        .map((p) =>
             <div key={p.id} className="prodsContainer col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <h4 className="prodsName"> {p.title} </h4>
-                <Link to={`/products/${p.id}`} ><img className="prodsImg" src={"assets/" + p.img} alt="producto" /></Link>
+                <Link to={`/products/${p.id}`} ><img className="prodsImg" src={"./assets/" + p.img} alt="producto" /></Link>
                 <p className="prodsDetail">Disponibles: {p.stock} </p>
                 <div className="container-button">
                     <Link to={`/products/${p.id}`} >

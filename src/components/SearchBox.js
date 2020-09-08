@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react'
+import { useSearchContext } from '../context/SearchContext'
 
 function SearchBox() {
-    const [InputValue, setInputValue] = useState('')
+    const {InputValue, getValue} = useSearchContext()
 
     useEffect(() => {
-        console.log(InputValue)
+
     },[InputValue])
 
     return (
         <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" 
-            placeholder="Search" aria-label="Search" onChange={event => setInputValue(event.target.value)} />
+            placeholder="Search" aria-label="Search" onChange={event => getValue(event.target.value)} />
         </form>
     )
 }
