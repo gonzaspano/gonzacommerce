@@ -13,7 +13,7 @@ function ItemDetail(props) {
         <div className="container-fuid">
             <div className="row">
                 <div className="col-lg-6 col-xl-6">
-                    <img src={props.prod.img} className="imgDetail" alt="producto" />
+                    <img src={"../assets/" + props.prod.img} className="imgDetail" alt="producto" />
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div className="containerDetail">

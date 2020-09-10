@@ -54,8 +54,12 @@ export function CartContexProvider( { children } ) {
         }
     }
 
+    function totalPrice() {
+        return list.reduce((prev, next) => (prev + (next.quantity * next.price)),0)
+        }
+
     return <>
-        <CartContext.Provider value= {{ list, addProd, cleanList, totalQuantityCart, setTotalQuantityCart, deleteProd }} >
+        <CartContext.Provider value= {{ list, addProd, cleanList, totalQuantityCart, setTotalQuantityCart, deleteProd, totalPrice }} >
             {children}
         </CartContext.Provider>
     </>
