@@ -7,33 +7,36 @@ import ItemDetailContainer from './containers/ItemDetailContainer';
 import Cart from './components/Cart'
 import { CartContexProvider } from './context/CartContext'
 import { SearchContextProvider } from './context/SearchContext';
+import { BuyerInfoContextProvider } from './context/BuyerInfoContext';
 
 function App() {
   return (
     <BrowserRouter>
       <CartContexProvider>
-        <SearchContextProvider>
-          <Navbar />
-          <Switch>
+        <BuyerInfoContextProvider>
+          <SearchContextProvider>
+            <Navbar />
+            <Switch>
 
-            <Route exact path='/' >
-              <Home />
-            </Route>
+              <Route exact path='/' >
+                <Home />
+              </Route>
 
-            <Route path='/categories/:category' >
-              <Home />
-            </Route>
+              <Route path='/categories/:category' >
+                <Home />
+              </Route>
 
-            <Route path='/products/:id'>
-              <ItemDetailContainer />
-            </Route>
+              <Route path='/products/:id'>
+                <ItemDetailContainer />
+              </Route>
 
-            <Route path='/cart'>
-              <Cart />
-            </Route>
+              <Route path='/cart'>
+                <Cart />
+              </Route>
 
-          </Switch>
-        </SearchContextProvider>
+            </Switch>
+          </SearchContextProvider>
+        </BuyerInfoContextProvider>
       </CartContexProvider>
       <Footer />
     </BrowserRouter>

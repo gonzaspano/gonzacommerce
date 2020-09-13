@@ -29,7 +29,7 @@ function ItemDetailContainer() {
             }).finally(() => {
                 setLoading(false)
             })
-        }, 3000)
+        }, 1000)
     },[])
 
 

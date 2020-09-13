@@ -5,7 +5,10 @@ import '../components/Cart.css'
 import { Link } from 'react-router-dom'
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import { getFirestore } from '../firebase'
+import { getFirestore } from '../firebase';
+import Checkout from './Checkout'
+import { useBuyerInfoContext } from '../context/BuyerInfoContext'
+import SuccessfulPurchase from './SuccessfulPurchase'
 
 function CartComponent(props) {
     const { list, cleanList, deleteProd, totalPrice } = useCartContext()
@@ -28,8 +31,10 @@ function CartComponent(props) {
                 </div>
                 <div className="productContainer">
                     <button className="btn btn-dark" onClick={cleanList}>Vaciar</button>
-                    <button className="btn btn-dark" onClick={props.createOrder} >Comprar</button>
+                    <button className="btn btn-dark" onClick={props.showCheckout}>Checkout</button>
                 </div>
+                <div className="productContainer"><p>Click en checkout para finalizar</p></div>
+                { props.checkOutState ? <Checkout createOrder={props.createOrder} /> : null}
             </div>
         </div>
     </>
@@ -53,14 +58,27 @@ function Title() {
     )
 }
 
-
-
 function Cart() {
     const { list, totalPrice } = useCartContext()
     const [FullCart, setFullCart] = useState(true)
-    const [orderId, setOrderId] = useState("")
+    const [orderId, setOrderId] = useState()
+    const [checkOutState, setCheckOutState] = useState(false)
+    const { buyerInfo } = useBuyerInfoContext()
+    const [ successPurchase, setSuccessPurchase ] = useState(false)
 
-    async function createOrder() {
+    function showCheckout() {
+        setCheckOutState(true)
+    }
+
+    function hideCheckOut() {
+        setCheckOutState(false)
+    }
+
+    function purchaseDone() {
+        setSuccessPurchase(true)
+    }
+
+    async function createOrder(e) {
         const db = getFirestore()
         const orders = db.collection("orders")
 
@@ -72,11 +90,7 @@ function Cart() {
         }))
 
         const newOrder = {
-            buyer: {
-                name: "Pepe Mujica",
-                phone: "1554667998",
-                email: "pepemujica@gobuy.com"
-            },
+            buyer: buyerInfo,
             prods: selectedProds,
             date: firebase.firestore.FieldValue.serverTimestamp(),
             total: totalPrice()
@@ -88,13 +102,15 @@ function Cart() {
 
         try {
             const { id } = await orders.add(newOrder);
-            setOrderId(id);
-            console.log(id)
+            console.log("id es" + id)
+            setOrderId(id)
         } catch (err) {
             // seteamos feedback para el user
-            console.log('Error');
+            console.log('Error' + err);
         } finally {
-            console.log(orderId)
+            purchaseDone()
+            hideCheckOut()
+            setFullCart(false)
         }
     }
 
@@ -105,7 +121,12 @@ function Cart() {
     }, [list])
 
     return <>
-        {FullCart ? <CartComponent createOrder= {createOrder} /> : <EmptyCart />}
+        {FullCart ? <CartComponent  checkOutState= {checkOutState} 
+                                    showCheckout={showCheckout} 
+                                    createOrder= {createOrder} 
+                                    successPurchase= {successPurchase} 
+                                    orderId= {orderId} /> : <EmptyCart />}
+        {successPurchase ? <SuccessfulPurchase orderId= {orderId} /> : null  }
     </>
 }
 
