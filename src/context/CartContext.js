@@ -10,9 +10,9 @@ export function CartContexProvider( { children } ) {
     const [totalQuantityCart, setTotalQuantityCart] = useState(0)
 
     function addProd(newProd, quantity) {
-        const compareIds = (prod) => prod.id == newProd.id;
+        const compareIds = (prod) => prod.id === newProd.id;
         const prodIndex = list.findIndex(compareIds)
-        if (prodIndex == -1 ) {
+        if (prodIndex === -1 ) {
             const prodAdded = [...list, newProd]
             setList(prodAdded)
             addProdQuantity(newProd, quantity)
@@ -43,7 +43,7 @@ export function CartContexProvider( { children } ) {
     }
 
     function deleteProd(deletedProd) {
-        const compareIds = (prod) => prod.id == deletedProd.id;
+        const compareIds = (prod) => prod.id === deletedProd.id;
         const prodIndex = list.findIndex(compareIds)
         if (prodIndex !== -1 && list[prodIndex].quantity >= 2) {
             list[prodIndex].quantity = list[prodIndex].quantity - 1

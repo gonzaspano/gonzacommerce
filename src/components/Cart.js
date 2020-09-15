@@ -59,11 +59,11 @@ function Title() {
 }
 
 function Cart() {
-    const { list, totalPrice } = useCartContext()
+    const { list, totalPrice, cleanList } = useCartContext()
     const [FullCart, setFullCart] = useState(true)
     const [orderId, setOrderId] = useState()
     const [checkOutState, setCheckOutState] = useState(false)
-    const { buyerInfo } = useBuyerInfoContext()
+    const { buyerInfo, mail, confirmMail } = useBuyerInfoContext()
     const [ successPurchase, setSuccessPurchase ] = useState(false)
 
     function showCheckout() {
@@ -78,7 +78,8 @@ function Cart() {
         setSuccessPurchase(true)
     }
 
-    async function createOrder(e) {
+    async function createOrder() {
+        if (mail === confirmMail) {
         const db = getFirestore()
         const orders = db.collection("orders")
 
@@ -96,10 +97,6 @@ function Cart() {
             total: totalPrice()
         }
 
-/*         const prodsToUpdate = db
-            .collection('productos',
-                firebase.firestore.FieldPath.documentId(), "in", selectedProds.map(i => i.id)) */
-
         try {
             const { id } = await orders.add(newOrder);
             console.log("id es" + id)
@@ -110,9 +107,10 @@ function Cart() {
         } finally {
             purchaseDone()
             hideCheckOut()
-            setFullCart(false)
+            cleanList()
         }
     }
+}
 
     useEffect(() => {
         if (list.length === 0) {

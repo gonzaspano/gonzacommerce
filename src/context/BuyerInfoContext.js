@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 
 export const BuyerInfoContext = React.createContext()
 
@@ -8,6 +8,7 @@ export function BuyerInfoContextProvider( {children} ) {
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")    
     const [mail, setMail] = useState("")
+    const [confirmMail, setConfirmMail] = useState("")
     const [tel, setTel] = useState("")
 
     
@@ -23,7 +24,7 @@ export function BuyerInfoContextProvider( {children} ) {
     }
 
     return (
-        <BuyerInfoContext.Provider value= {{ buyerInfo, setName, setSurname, setMail, setTel, submitHandler}} >
+        <BuyerInfoContext.Provider value= {{ buyerInfo, confirmMail, mail, setName, setSurname, setMail, setTel, submitHandler, setConfirmMail}} >
             {children}
         </BuyerInfoContext.Provider>
     )

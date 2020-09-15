@@ -5,13 +5,15 @@ import '../components/CartIcon.css'
 import { useCartContext } from '../context/CartContext'
 
 function CartIcon() {
-    const {totalQuantityCart} = useCartContext()
+    const { totalQuantityCart } = useCartContext()
 
     return <>
-        <div className="container">
-            <Link to={`/cart`}> <img src={CartImg} className="cartImg" alt="cart" /> </Link>
-            <p> {totalQuantityCart} </p>
-        </div>
+        <Link to={`/cart`}> <div className="container">
+            <img src={CartImg} className="cartImg" alt="cart" /> 
+            <div className="quantityCart">
+                <p> {totalQuantityCart} </p>
+            </div>
+        </div> </Link>
     </>
 }
 

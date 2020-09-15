@@ -3,7 +3,7 @@ import { useBuyerInfoContext } from '../context/BuyerInfoContext'
 import './Checkout.css'
 
 function CheckOut(props) {
-    const { setName, setSurname, setMail, setTel, submitHandler } = useBuyerInfoContext()
+    const { setName, setSurname, setMail, setTel, submitHandler, setConfirmMail } = useBuyerInfoContext()
 
     return (
         <div className="col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6">
@@ -22,6 +22,11 @@ function CheckOut(props) {
                     <label>Correo electrónico</label>
                     <input type="email" className="form-control" id="CorreoElectrónico" placeholder="name@example.com"
                         onChange={event => setMail(event.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label>Repita su correo electrónico</label>
+                    <input type="email" className="form-control" id="CorreoElectrónico" placeholder="name@example.com"
+                    onChange={event => setConfirmMail(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Teléfono</label>

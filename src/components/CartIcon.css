@@ -7,4 +7,10 @@
 }
 .quantityCart {
     position: absolute;
+    margin-top: 37px;
+    margin-left: 15px;
+    top: 0;
+}
+.quantityCart p {
+    color: white
 }

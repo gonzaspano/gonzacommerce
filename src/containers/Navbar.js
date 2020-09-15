@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Title from '../components/Title'
 import SearchBox from '../components/SearchBox'
 import '../containers/Navbar.css'

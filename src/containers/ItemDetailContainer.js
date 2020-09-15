@@ -4,10 +4,12 @@ import '../containers/ItemDetailContainer.css'
 import ItemDetail from '../components/ItemDetail'
 import LoadingText from '../components/LoadingText'
 import { getFirestore } from '../firebase/index'
+import DontExist from '../components/DontExist'
 
 function ItemDetailContainer() {
     const [Prod, setProd] = useState([])
     const [Loading, setLoading] = useState(true)
+    const [Exist, setExist] = useState(false)
     const { id } = useParams()
 
     useEffect(() => {
@@ -20,9 +22,10 @@ function ItemDetailContainer() {
             item.get().then((doc) => {
                 if (!doc.exists) {
                     console.log('No existe el producto')
-                    return;
+                    return
                 }
                 console.log('producto encontradao rey')
+                setExist(true)
                 setProd( {id: doc.id, ...doc.data() } )
             }).catch((error) => {
                 console.log('error buscando el prod', error)
@@ -30,11 +33,12 @@ function ItemDetailContainer() {
                 setLoading(false)
             })
         }, 1000)
-    },[])
+    },[id])
 
 
     return <>
-        { Loading ? <LoadingText /> : <ItemDetail prod= {Prod} /> }
+        { Loading ? <LoadingText /> : Exist ? <ItemDetail prod= {Prod} /> : <DontExist /> }
+
     </>
 }
 

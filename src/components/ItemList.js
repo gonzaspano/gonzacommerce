@@ -14,7 +14,7 @@ function ItemList() {
 
         const itemCollection = db.collection("productos")
 
-        if (category == "undefined") {
+        if (category === "undefined") {
             itemCollection.get().then((querySnapshot) => {
                 if (querySnapshot.size === 0) {
                     console.log("no resultados pa")
@@ -49,7 +49,7 @@ function ItemList() {
         .map((p) =>
             <div key={p.id} className="prodsContainer col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <h4 className="prodsName"> {p.title} </h4>
-                <Link to={`/products/${p.id}`} ><img className="prodsImg" src={"./assets/" + p.img} alt="producto" /></Link>
+                <Link to={`/products/${p.id}`} ><img className="prodsImg" src={"../assets/" + p.img} alt="producto" /></Link>
                 <p className="prodsDetail">Disponibles: {p.stock} </p>
                 <div className="container-button">
                     <Link to={`/products/${p.id}`} >
