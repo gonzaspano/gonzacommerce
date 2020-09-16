@@ -12,7 +12,7 @@ La página se recargará si la actualizas.
 
 Es necesario descargar los módulos de Firebase para poder llevar adelante el proyecto. La versión usada es 7.19.1. <br>
 También es necesario descargar react-router-dom. <br>
-A pesar de usar Bootstrap, no es necesario descargarlo puesto que se usó mediante link y scripts en el archivo html. 
+A pesar de usar Bootstrap, no es necesario descargarlo puesto que se usó mediante link y scripts en el archivo html. Fue utilizado para darle un salto de calidad en el diseño web de la aplicación.
 
 ## Cómo debería verse
 
