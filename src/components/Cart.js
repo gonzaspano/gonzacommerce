@@ -123,8 +123,7 @@ function Cart() {
                                     showCheckout={showCheckout} 
                                     createOrder= {createOrder} 
                                     successPurchase= {successPurchase} 
-                                    orderId= {orderId} /> : <EmptyCart />}
-        {successPurchase ? <SuccessfulPurchase orderId= {orderId} /> : null  }
+                                    orderId= {orderId} /> : successPurchase ? <SuccessfulPurchase orderId= {orderId} /> : <EmptyCart />}
     </>
 }
 
