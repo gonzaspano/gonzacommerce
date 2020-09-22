@@ -7,13 +7,12 @@ import { getFirestore } from '../firebase/index'
 import DontExist from '../components/DontExist'
 
 function ItemDetailContainer() {
-    const [Prod, setProd] = useState([])
+    const [prod, setProd] = useState([])
     const [Loading, setLoading] = useState(true)
     const [Exist, setExist] = useState(false)
     const { id } = useParams()
 
     useEffect(() => {
-        setTimeout(() => {
             const db = getFirestore()
 
             const itemCollection = db.collection("productos")
@@ -32,12 +31,11 @@ function ItemDetailContainer() {
             }).finally(() => {
                 setLoading(false)
             })
-        }, 1000)
     },[id])
 
 
     return <>
-        { Loading ? <LoadingText /> : Exist ? <ItemDetail prod= {Prod} /> : <DontExist /> }
+        { Loading ? <LoadingText /> : Exist ? <ItemDetail prod= {prod} /> : <DontExist /> }
 
     </>
 }

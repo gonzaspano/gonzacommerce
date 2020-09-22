@@ -7,7 +7,7 @@ import { useSearchContext } from '../context/SearchContext'
 function ItemList() {
     const [prods, setProds] = useState([])
     const { category = "undefined" } = useParams()
-    const { InputValue } = useSearchContext()
+    const { inputValue } = useSearchContext()
 
     useEffect(() => {
         const db = getFirestore()
@@ -39,12 +39,12 @@ function ItemList() {
             })
         }
 
-    }, [category, InputValue])
+    }, [category, inputValue])
 
     return <>
         {prods
         .filter(p => {
-            return p.title.toLowerCase().indexOf(InputValue) >= 0
+            return p.title.toLowerCase().indexOf(inputValue) >= 0
         } )
         .map((p) =>
             <div key={p.id} className="prodsContainer col-sm-12 col-md-12 col-lg-4 col-xl-4">

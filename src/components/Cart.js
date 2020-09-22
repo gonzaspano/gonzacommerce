@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useCartContext } from '../context/CartContext'
 import DeleteImg from '../assets/delete.png'
 import '../components/Cart.css'
@@ -60,7 +60,6 @@ function Title() {
 
 function Cart() {
     const { list, totalPrice, cleanList } = useCartContext()
-    const [FullCart, setFullCart] = useState(true)
     const [orderId, setOrderId] = useState()
     const [checkOutState, setCheckOutState] = useState(false)
     const { buyerInfo, mail, confirmMail } = useBuyerInfoContext()
@@ -112,14 +111,8 @@ function Cart() {
     }
 }
 
-    useEffect(() => {
-        if (list.length === 0) {
-            setFullCart(false)
-        }
-    }, [list])
-
     return <>
-        {FullCart ? <CartComponent  checkOutState= {checkOutState} 
+        {list.length !== 0 ? <CartComponent  checkOutState= {checkOutState} 
                                     showCheckout={showCheckout} 
                                     createOrder= {createOrder} 
                                     successPurchase= {successPurchase} 

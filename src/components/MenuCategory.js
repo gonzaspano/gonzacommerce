@@ -2,13 +2,33 @@ import React from 'react'
 import '../components/MenuCategory.css'
 import { Link } from 'react-router-dom'
 
+const categories = [{
+    category: "regalos",
+    categoryId: 1
+},
+{
+    category: "eventos",
+    categoryId: 2
+},
+{
+    category: "condolencias",
+    categoryId: 3
+}
+]
+
 function MenuCategory() {
+
 
     return <>
         <div className="MenuCategory">
-            <Link to={`/categories/regalos`} > <p className="textCat"> Regalos </p> </Link>
-            <Link to={`/categories/eventos`} > <p className="textCat"> Eventos </p> </Link>
-            <Link to={`/categories/condolencias`} > <p className="textCat"> Condolencias </p> </Link>
+            {categories
+                .map((cat) =>
+                    <div key={cat.categoryId} >
+                        <Link to={`/categories/${cat.category}`}>
+                            <p className="textCat"> {cat.category} </p>
+                        </Link>
+                    </div>
+                )}
         </div>
     </>
 }

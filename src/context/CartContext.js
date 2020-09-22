@@ -43,15 +43,16 @@ export function CartContexProvider( { children } ) {
     }
 
     function deleteProd(deletedProd) {
+        const newList = [...list]
         const compareIds = (prod) => prod.id === deletedProd.id;
         const prodIndex = list.findIndex(compareIds)
-        if (prodIndex !== -1 && list[prodIndex].quantity >= 2) {
-            list[prodIndex].quantity = list[prodIndex].quantity - 1
-            removeTotalQuantity()
+        if (prodIndex !== -1 && newList[prodIndex].quantity >= 2) {
+            newList[prodIndex].quantity = newList[prodIndex].quantity - 1
         } else {
-            list.splice( prodIndex , 1)
-            removeTotalQuantity()
+            newList.splice( prodIndex , 1)
         }
+        setList(newList)
+        removeTotalQuantity()
     }
 
     function totalPrice() {

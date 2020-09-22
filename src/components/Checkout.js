@@ -6,7 +6,7 @@ function CheckOut(props) {
     const { setName, setSurname, setMail, setTel, submitHandler, setConfirmMail } = useBuyerInfoContext()
 
     return (
-        <div className="col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6">
+        <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <form onSubmit={submitHandler} >
                 <div className="form-group">
                     <label>Nombre</label>

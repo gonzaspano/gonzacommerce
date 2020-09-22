@@ -4,14 +4,14 @@ export const SearchContext = React.createContext()
 export const useSearchContext = () => useContext(SearchContext)
 
 export function SearchContextProvider ( {children} ) {
-    const [InputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('')
 
     function getValue(text) {
         setInputValue(text)
     }
 
     return <>
-        <SearchContext.Provider value= {{ getValue, InputValue }} >
+        <SearchContext.Provider value= {{ getValue, inputValue }} >
             {children}
         </SearchContext.Provider>
     </>
