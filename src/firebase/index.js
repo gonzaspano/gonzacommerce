@@ -9,8 +9,8 @@ const app = firebase.initializeApp(
         projectId: "gonzacommerce",
         storageBucket: "gonzacommerce.appspot.com",
         messagingSenderId: "146242879648",
-        appId: "1:146242879648:web:a9139e16a6e5c3dd2d89c5",
-        measurementId: "G-7NCKMCY5RG"
+        appId: "1:146242879648:web:4801b04a155fffe32d89c5",
+        measurementId: "G-V9MF7NNMGN"
       }
 )
 
