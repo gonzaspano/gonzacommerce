@@ -2,7 +2,7 @@
 
 Su funcionamiento se puede ver [acá](https://lafloreriaecommerce.herokuapp.com/), deployado con Heroku. 
 
-La floreria es una aplicación ecommerce para el rubro floral realizado con React js. Fue desarrollado con [Create React App](https://github.com/facebook/create-react-app). Su funcionamiento va desde la selección de los productos y su cantidad hasta llenar un formulario para generar la orden de compra que será almacenada en ###Firestore. 
+La floreria es una aplicación ecommerce para el rubro floral realizado con React js. Fue desarrollado con [Create React App](https://github.com/facebook/create-react-app). Su funcionamiento va desde la selección de los productos y su cantidad hasta llenar un formulario para generar la orden de compra que serán almacenadas en Firestore. 
 
 ## Levantar app
 
