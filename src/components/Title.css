@@ -6,3 +6,6 @@
     text-align: center;
     margin-top: 35px;
 }
+.title-link:hover{
+    text-decoration: none;
+}

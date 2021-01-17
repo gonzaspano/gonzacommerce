@@ -24,7 +24,7 @@ function MenuCategory() {
             {categories
                 .map((cat) =>
                     <div key={cat.categoryId} >
-                        <Link to={`/categories/${cat.category}`}>
+                        <Link className="linkCat" to={`/categories/${cat.category}`}>
                             <p className="textCat"> {cat.category} </p>
                         </Link>
                     </div>

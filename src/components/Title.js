@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function Title() {
     return (
-        <Link to= {'/'}> <h1 className="Title"> La florería</h1> </Link>
+        <Link className="title-link" to= {'/'}> <h1 className="Title"> La florería</h1> </Link>
     )
 }
 

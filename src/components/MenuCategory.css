@@ -12,3 +12,6 @@
     color: black;
     font-size: 25px;
 }
+.linkCat:hover {
+    text-decoration: none;
+}
