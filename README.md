@@ -6,7 +6,7 @@ La floreria es una aplicación ecommerce para el rubro floral realizado con Reac
 
 ## Levantar app
 
-Escribir `npm start` para instalar todas las dependencias de la app
+Escribir `npm install` para instalar todas las dependencias de la app
 Escribir en la terminal  `npm start` <br>
 Levantar en [http://localhost:3000](http://localhost:3000/) para verla en el browser. <br>
 La página se recargará si la actualizas.
